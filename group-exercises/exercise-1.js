@@ -12,9 +12,13 @@ sayHello(["Lachlan", "Kim", "Moira"]);
 // Given an array of a first, middle, and last name ["Adam", "Michael", "Szaruga"], write a function that prints the person's initials.
 
 function getInitials(arrayNames2) {
+  var initials = "";
   for (var i = 0; i < arrayNames2.length; i++) {
-    console.log(arrayNames2[i][0]);
+    var currentName = arrayNames2[i];
+    var currentInitial = currentName.charAt(0);
+    initials += currentInitial;
   }
+  console.log(initials);
 }
 
 getInitials(["Adam", "Michael", "Szaruga"]);
