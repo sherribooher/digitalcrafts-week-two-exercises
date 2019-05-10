@@ -28,7 +28,55 @@ console.log(mostCommon(birthYears));
 
 // Given a string "This is a random string", write a function that returns a count of each character in the string.
 
-// Given an array of Olympic race results, [{country: "usa", time: 233}, {country: "poland", time: 222}, ...], write a function that returns each country's best time.
+var random = "This is a random string";
+
+function countChars(randomString) {
+  var numChars = {};
+  var txt = random.split(" "); // split the string into an array of words
+  var letters = txt.join(); // join the words in the array to become letters
+
+  for (var i = 0; i < letters.length; i++) {
+    // loop through the letters array
+    var currentItem = letters[i]; // set each letter as a property of the object numChars
+    if (!numChars[currentItem]) {
+      // if a letter is not in the object, add it
+      numChars[currentItem] = 0; // set the count of that letter to 0
+    }
+    numChars[currentItem]++; // if the letter already exists in the object, add 1 to the count
+  }
+  return numChars; // return the olympics2000 as an object (letter count)
+}
+
+console.log(countChars(random));
+
+// Given an array of Olympic race olympics2000, [{country: "usa", time: 233}, {country: "poland", time: 222}, ...], write a function that returns each country's best time.
+
+function findBestTimes(times) {
+  var results = {};
+
+  for (var i = 0; i < times.length; i++) {
+    var currentRecord = times[i];
+
+    if (!results[currentRecord.country]) {
+      results[currentRecord.country] = currentRecord.time;
+    } else {
+      if (currentRecord.time < results[currentRecord.country]) {
+        results[currentRecord.country] = currentRecord.time;
+      }
+    }
+    return results;
+  }
+}
+var olympics2000 = [
+  { country: "USA", time: 244 },
+  { country: "Poland", time: 232 },
+  { country: "USA", time: 222 },
+  { country: "Australia", time: 144 },
+  { country: "Australia", time: 254 },
+  { country: "USA", time: 143 }
+];
+
+console.log(findBestTimes(olympics2000));
 
 // Given a list of numbers, [-1, 5, -25, -3, 99, 20], write a function that returns the count of positive numbers and negative numbers.
 var numbers = [-1, 2, -25, -3, 99, 20];
